@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+
+    <!-- call -->
+    <button onclick="callSuccess()">Success FToast</button>
+    <button onclick="callError()">Error FToast</button>
+    <script>
+        function callSuccess(){
+            ftoast("success", "Success", "This is success message.", 2)
+        }
+        function callError(){
+            ftoast("alert", "alert", "This is alert message.", 2)
+        }
+    </script>
+    
+</body>
+<script src="https://connectwithfiroz.github.io/ftoast-message-box/ftoast.js"></script>
+</html>
+
+<!-- 
+    #1=> Add the script - <script src="https://connectwithfiroz.github.io/ftoast-message-box/ftoast.js"></script>
+
+    #2 => Call the function 
+
+    Read Documentation Here - https://connectwithfiroz.github.io/ftoast-message-box/
+
+ -->
