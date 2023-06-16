@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set form vlaue</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" name="name" required>
+      
+        <label for="addressInput">Address:</label>
+        <textarea id="addressInput" name="address" required></textarea>
+      
+        <label>Gender:</label>
+        <input type="radio" id="maleRadio" name="gender" value="male" required>
+        <label for="maleRadio">Male</label>
+        <input type="radio" id="femaleRadio" name="gender" value="female" required>
+        <label for="femaleRadio">Female</label>
+      
+        <label for="course">Course:</label>
+        <select id="course" required>
+          <option value="">Select a course</option>
+          <option value="java">Java</option>
+          <option value="python">Python</option>
+          <option value="c++">C++</option>
+        </select>
+      
+        <button type="submit">Submit</button>
+      </form>
+      
+</body>
+<script>
+function setFormValue(obj){
+  Object.keys(obj).forEach(key => {
+    ele = document.querySelector(`#${key}`);
+    if(!ele){
+      ele = document.querySelector(`[name='${key}']`);
+    }
+    
+    if(ele){
+        console.log(ele.tagName);
+        if(['SELECT', 'INPUT'].includes(ele.tagName)){
+        
+        if(ele.type == 'radio'){
+            radioButtons = document.querySelectorAll(`[name='${key}']`);
+            for (let i = 0; i < radioButtons.length; i++) {
+                console.log(radioButtons[i].value)
+                if (radioButtons[i].value === obj[key]) {
+                    radioButtons[i].checked = true;
+                    break; // Once found, exit the loop
+                }
+            }
+        }else{
+            ele.value = obj[key];
+        }
+        }else if(ele.tagName == 'TEXTAREA'){
+        ele.innerText = obj[key];
+        }
+    }
+
+  });
+}
+
+
+
+//Usage
+//#1. Get the data from database in object formate
+const data = {
+    name: 'Firoz', address: 'Near Gandhinagar, Gujarat', gender: 'female', course:'c++'
+}
+//#2 Call this funciton
+setFormValue(data);
+</script>
+</html>
