@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sortable Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <script>
+    $(function() {
+      $("#myList").sortable({
+        update: function(event, ui) {
+          var sortedIDs = $(this).sortable("toArray");
+          console.log(sortedIDs);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <ul id="myList">
+    <li id="item_1">Item 1</li>
+    <li id="item_2">Item 2</li>
+    <li id="item_3">Item 3</li>
+    <li id="item_4">Item 4</li>
+  </ul>
+</body>
+<script>
+    $(function() {
+      $("#myList").sortable({
+        update: function(event, ui) {
+          var sortedIDs = $(this).sortable("toArray");
+          $.ajax({
+            url: `${base_url}/list-order-sorting.php`,
+            method: "POST",
+            data: {order: sortedIDs},
+            success: function(response) {
+              console.log(response)
+              if(response['success'] == true){
+                toastr.success(response['message']);
+                loadDetailsOfOfficers(LANG)           
+              }else{
+                  toastr.error(response['message']);
+              }
+            }
+          });
+        }
+      });
+    });
+</script>
+</html>
