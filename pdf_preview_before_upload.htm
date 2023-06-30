@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF PREVIEW</title>
+    <!-- css -->
+    <style>
+        #pdfPreview {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+<input type="file" id="pdfFile" accept=".pdf" />
+<div id="pdfPreview"></div>
+
+<script>
+    // Function to handle the file selection
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  
+  if (file && file.type === 'application/pdf') {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      // Create a <embed> element to display the PDF preview
+      const embed = document.createElement('embed');
+      embed.src = e.target.result;
+      embed.width = '100%';
+      embed.height = '500px';
+      
+      // Clear previous preview (if any) and append the new preview
+      const previewContainer = document.getElementById('pdfPreview');
+      previewContainer.innerHTML = '';
+      previewContainer.appendChild(embed);
+    };
+
+    reader.readAsDataURL(file);
+  }
+}
+
+// Attach the event listener to the file input element
+const fileInput = document.getElementById('pdfFile');
+fileInput.addEventListener('change', handleFileSelect);
+
+</script>
+</body>
+</html>
