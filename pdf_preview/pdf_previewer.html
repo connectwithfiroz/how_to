@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+ 
+        #pdfPreview {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        height: 100vh;
+        }
+    </style>
+
+  </head>
+  <body>
+      <section class="main">
+        <div class="row p-2">
+            <div class="col">
+                <h6>Attachment List</h6>
+              <form action="/gvc/controller/office/registry/outward_attachment_upload.php" method="post" enctype="multipart/form-data" id="outward_attachment_upload_form">
+                  <div class="col-auto">
+                    <label for="Upload">Upload File</label>
+                    <input type="file" class="form-control" style="width:250px; display:inline-block;" id="pdfFile" multiple="true" name="files[]" accept=".pdf">
+                    <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                  </div>
+              </form>
+            </div>
+
+            <div class="col" id="attachment_details">
+              <div class="row">
+                <div class="col">
+                  <h6>Attachment List</h6>
+                  <div class="btn-group mr-2" id="selectFileList">
+                    <button type="button" class="btn btn-outline-primary showcomplaintAttachment active" data-rownum="1" data-attach_id="" id="comp_attach_1">1</button>
+                    <button type="button" class="btn btn-outline-primary showcomplaintAttachment" data-rownum="1" data-attach_id="" id="comp_attach_1">2</button>
+                    
+                  </div>
+                </div>
+                <div class="col" id="documentNameCont">
+                  <h6>Document Name</h6>
+                  <div class="btn-group w-100  text-truncate" role="group" aria-label="Document Name group">
+                    <button type="button" class="text-white btn btn-primary " data-id="physicalCmpBtn" id="documentName">26-06-23-001</button>
+                    <!-- <button type="button" class="btn btn-outline-danger active" id="deleteAttachmentBtn" data-id="1">
+                      <i class="bi bi-trash text-xm"></i>
+                    </button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- pdf preview section -->
+          <div id="pdfPreview" >
+            Preview will be shown here.
+          </div>
+      </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="script/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+    <!-- script -->
+    <script src="script/pdf_script.js"></script>
+</html>
