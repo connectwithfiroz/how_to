@@ -162,22 +162,14 @@
     cursor: pointer;
 
 }
-
-.multiSelect_deselect {
+.multiSelect_choice::after{
+    content:'x';
     color:red;
-    content: "x";
     font-weight: bolder;
     font-size: 18px;
     padding:5px;
-    /* width: 12px;
-    height: 12px;
-    display: inline-block;
-    stroke: #b2bac3;
-    stroke-width: 4px;
-    margin-top: -1px;
-    margin-left: 2px;
-    vertical-align: middle; */
 }
+
 
 .multiSelect_choice:hover .multiSelect_deselect {
     stroke: #a1a8b1;
